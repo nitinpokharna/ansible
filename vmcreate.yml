@@ -41,7 +41,7 @@
           direction: Inbound
   - name: Create virtual network inteface card
     azure_rm_networkinterface:
-    resource_group: myResourceGroup
+      resource_group: myResourceGroup
       name: myNIC
       virtual_network: myVnet
       subnet: mySubnet
