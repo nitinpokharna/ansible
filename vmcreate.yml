@@ -1,61 +1,63 @@
-- name: CREATE VM
+#Linux VM Creation through Ansible on Azure
+#Author - Nitin Pokharna
+- name: Create Azure VM
   hosts: localhost
   connection: local
-  gather_facts: False
-  vars:
-    # Variables 'vnet', 'subnet', 'vmname' and 'resgrp' need to be provided at command line with arg --extra-vars
-  - name: Create storage account
-    azure_rm_storageaccount:
-      resource_group: '{{ resgrp }}'
-      name: '{{ vmname }}'
-      account_type: Standard_LRS
-  - name: Create security group that allows SSH and HTTP
-    azure_rm_securitygroup: 
-      resource_group: '{{ resgrp }}'
-      name: '{{ vmname }}'
-      rules: 
-        - name: SSH 
-          protocol: Tcp 
-          destination_port_range: 22  
-          access: Allow  
-          priority: 101 
-          direction: Inbound
-        - name: WEB
-          protocol: Tcp 
-          destination_port_range: 80  
-          access: Allow  
-          priority: 102 
-          direction: Inbound
+  tasks:
+  - name: Create resource group
+    azure_rm_resourcegroup:
+      name: myResourceGroup
+      location: eastus
+  - name: Create virtual network
+    azure_rm_virtualnetwork:
+      resource_group: myResourceGroup
+      name: myVnet
+      address_prefixes: "10.0.0.0/16"
+  - name: Add subnet
+    azure_rm_subnet:
+      resource_group: myResourceGroup
+      name: mySubnet
+      address_prefix: "10.0.1.0/24"
+      virtual_network: myVnet
   - name: Create public IP address
-    azure_rm_publicipaddress: 
-      resource_group: '{{ resgrp }}'
-      allocation_method: Static 
-      name: '{{ vmname }}'
-      domain_name_label: '{{ vmname }}'
-  - name: Create NIC
+    azure_rm_publicipaddress:
+      resource_group: myResourceGroup
+      allocation_method: Static
+      name: myPublicIP
+    register: output_ip_address
+  - name: Dump public IP for VM which will be created
+    debug:
+      msg: "The public IP is {{ output_ip_address.state.ip_address }}."
+  - name: Create Network Security Group that allows SSH
+    azure_rm_securitygroup:
+      resource_group: myResourceGroup
+      name: myNetworkSecurityGroup
+      rules:
+        - name: SSH
+          protocol: Tcp
+          destination_port_range: 22
+          access: Allow
+          priority: 1001
+          direction: Inbound
+  - name: Create virtual network inteface card
     azure_rm_networkinterface:
-      resource_group: '{{ resgrp }}'
-      name: '{{ vmname }}'
-      virtual_network: '{{ vnet }}'
-      subnet: '{{ subnet }}'
-      public_ip_name: '{{ vmname }}'
-      security_group: '{{ vmname }}'
+    resource_group: myResourceGroup
+      name: myNIC
+      virtual_network: myVnet
+      subnet: mySubnet
+      public_ip_name: myPublicIP
+      security_group: myNetworkSecurityGroup
   - name: Create VM
     azure_rm_virtualmachine:
-      resource_group: '{{ resgrp }}'
-      name: '{{ vmname }}'
-      storage_account: '{{ vmname }}'
-      storage_container: '{{ vmname }}'
-      storage_blob: '{{ vmname }}.vhd'
-      network_interfaces: '{{ vmname }}'
-      vm_size: Standard_A0
-      admin_username: lab-user
-      ssh_password_enabled: False
-      ssh_public_keys: 
-        - path: /home/nitinpokharna/.ssh/authorized_keys
-          key_data: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcfHG3DR6WZEdzFekria6wROlBP5kq1+4JliLRKVskcTTQWJr0vCoh5Q2qHlOWoQqqI+eonMoq3n9ISoJ5vsDtO7XH+HCmbTA7vcD7zcOSQIc9uc+swn8hvwdIUtaSSEem68sgwpx4DiotebUpR/noja/sQh+nSHYt5NPARsu1y+zPxLnLpe6q/cJOHxZULV8zD/JSODBMko1MzOSk7lX3CxLs0uXuMjro4x35/OFnxpzOO51Cv0BjKvx1IdhZqMmoyuFUWXgmzMD7IAGETL9SQFfpoW8ai8Rn+C0rlVLTru0FTR8bMqk7zPk9bNdFXlv33lWmtDL/Cx0W2LuiY0k/ nitinpokharna@AnsibleVM'
+      resource_group: myResourceGroup
+      name: vmbyansible
+      vm_size: Standard_DS1_v2
+      admin_username: azureuser
+      admin_password: Ansible@1234
+      ssh_password_enabled: yes
+      network_interfaces: myNIC
       image:
         offer: CentOS
         publisher: OpenLogic
-        sku: '7.2'
+        sku: '7.5'
         version: latest
