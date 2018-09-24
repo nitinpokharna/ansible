@@ -18,7 +18,7 @@
     },
     "dnsLabelPrefix": {
       "type": "string",
-      "Defaultvalue": "nitinpodns",
+      "Defaultvalue": "nitindns",
       "metadata": {
         "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
       }
