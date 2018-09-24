@@ -6,8 +6,7 @@
   vars:
     # Variables 'resgrp' and 'location' need to be provided at command line with arg --extra-vars
     templateLink: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/azuredeploy.json'
-    # No parameters required for this template
-    #paramsLink: ''
+    paramsLink: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/azuredeploy.parameters.json'
    
   tasks:
   - name: Deploy ARM template
@@ -17,4 +16,4 @@
         # location seems to be not optional
         location: 'eastus'
         template_link: '{{ templateLink }}'
-        #parameters_link: '{{ paramsLink }}'
+        parameters_link: '{{ paramsLink }}'
