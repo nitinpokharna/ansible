@@ -16,8 +16,8 @@
         resource_group_name: 'nitin'
         # location seems to be not optional
         location: 'eastus'
-        adminusername:'nitinpokharna'
-        adminpassword:'Ansible@1234'
+        admin_username:'nitinpokharna'
+        admin_password:'Ansible@1234'
         DNSLabelPrefix:'nitinpdns'
         template_link: '{{ templateLink }}'
         #parameters_link: '{{ paramsLink }}'
