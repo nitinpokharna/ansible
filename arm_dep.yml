@@ -14,6 +14,6 @@
         state: present
         resource_group_name: 'nitin'
         # location seems to be not optional
-        location: 'eastus'
+        location: 'centralus'
         template_link: '{{ templateLink }}'
         parameters_link: '{{ paramsLink }}'
