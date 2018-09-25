@@ -67,7 +67,23 @@
     "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
   },
   "resources": [
-    {
+  {
+     "apiVersion": "2017-05-10",
+     "name": "linkedTemplate",
+     "type": "Microsoft.Resources/deployments",
+     "properties": {
+       "mode": "incremental",
+       "templateLink": {
+          "uri":"https://raw.githubusercontent.com/nitinpokharna/ansible/master/nested/azuredeploy.json",
+          "contentVersion":"1.0.0.0"
+       },
+       "parametersLink": {
+          "uri":"https://raw.githubusercontent.com/nitinpokharna/ansible/master/nested/azuredeploy.parameters.json",
+          "contentVersion":"1.0.0.0"
+       }
+     }
+  },
+  {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[variables('storageAccountName')]",
       "apiVersion": "2015-06-15",
