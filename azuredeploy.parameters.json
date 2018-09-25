@@ -14,8 +14,5 @@
         "windowsOSVersion": {
             "value": "2012-R2-Datacenter"
         },
-        "workspaceName": {
-            "value": "nitin"
-        }
     }
 }
