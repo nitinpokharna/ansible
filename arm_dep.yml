@@ -7,9 +7,29 @@
     # Variables 'resgrp' and 'location' need to be provided at command line with arg --extra-vars
     templateLink: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/azuredeploy.json'
     paramsLink: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/azuredeploy.parameters.json'
+    templatelink_1: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/nested/azuredeploy.json'
+    paramslink_1: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/nested/azuredeploy.parameters.json'
    
   tasks:
-  - name: Deploy ARM template
+  - name: Creating Vault
+    azure_rm_deployment:
+        state: present
+        resource_group_name: 'nitindemo'
+        # location seems to be not optional
+        location: 'Central US'
+        template_link: '{{ templateLink_1 }}'
+        parameters_link: '{{ paramsLink_1 }}'
+        
+  - name: Create a secret
+    azure_rm_keyvaultsecret:
+      secret_name: MySecret
+      secret_value: My_Pass_Sec
+      keyvault_uri: https://nitinvault.vault.azure.net/
+      tags:
+          testing: testing
+          delete: never
+        
+  - name: Deploy ARM template_1
     azure_rm_deployment:
         state: present
         resource_group_name: 'nitindemo'
