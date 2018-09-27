@@ -1,46 +1,12 @@
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "keyVaultName": {
-                "value": "nitinansiblevault"
-            },
-            "tenantId": {
-                "value": "75ebdc51-0fe2-4640-8f20-3ba0c83c70bb"
-            },
-            "accessPolicies": {
-                "value": [
-                    {
-                        "tenantId": "75ebdc51-0fe2-4640-8f20-3ba0c83c70bb",
-                        "objectId": "08174317-3be3-45d5-95cb-422a10ef43e3",
-                        "permissions": {
-                            "keys": ["all"],
-                            "secrets": ["all"]
-                        }
-                    },
-                    {
-                        "tenantId": "75ebdc51-0fe2-4640-8f20-3ba0c83c70bb",
-                        "objectId": "08174317-3be3-45d5-95cb-422a10ef43e3",
-                        "permissions": {
-                            "keys": ["all"],
-                            "secrets": ["all"]
-                        }
-                    }
-                ]
-            },
-            "secretsObject": {
-                "value": {
-					"secrets": [						
-						{
-							"secretName": "exampleSecret1",
-							"secretValue": "secretVaule1"
-						},
-						{
-							"secretName": "exampleSecret2",
-							"secretValue": "secretValue2"
-						}
-					]
-				}
-            }
-        }
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "keyVaultName": {
+      "value": "nitinvault"
+    },
+    "objectId": {
+      "value": "08174317-3be3-45d5-95cb-422a10ef43e3"
     }
+  }
+}
