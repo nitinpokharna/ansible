@@ -20,15 +20,7 @@
         template_link: '{{ templateLink_1 }}'
         parameters_link: '{{ paramsLink_1 }}'
         
-  - name: Create a secret
-    azure_rm_keyvaultsecret:
-      secret_name: MySecret
-      secret_value: My_Pass_Sec
-      keyvault_uri: https://nitinvault.vault.azure.net/
-      tags:
-          testing: testing
-          delete: never
-        
+      
   - name: Deploy ARM template_1
     azure_rm_deployment:
         state: present
