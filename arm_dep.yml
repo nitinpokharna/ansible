@@ -7,8 +7,8 @@
     # Variables 'resgrp' and 'location' need to be provided at command line with arg --extra-vars
     templateLink: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/azuredeploy.json'
     paramsLink: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/azuredeploy.parameters.json'
-    templatelink_1: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/nested/azuredeploy.json'
-    paramslink_1: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/nested/azuredeploy.parameters.json'
+    templateLink_1: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/nested/azuredeploy.json'
+    paramsLink_1: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/nested/azuredeploy.parameters.json'
    
   tasks:
   - name: Creating Vault
