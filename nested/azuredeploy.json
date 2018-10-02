@@ -141,7 +141,7 @@
                         }
                     },
                     {
-                        "tenantId": "[parameters('tenantId')]"
+                        "tenantId": "[parameters('tenantId')]",
                         "objectId": "08174317-3be3-45d5-95cb-422a10ef43e3",
                         "permissions": {
                             "keys": [],
