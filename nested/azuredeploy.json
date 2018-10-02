@@ -78,34 +78,89 @@
         "displayName": "KeyVault"
       },
       "properties": {
-        "enabledForDeployment": "[parameters('enabledForDeployment')]",
-        "enabledForTemplateDeployment": "[parameters('enabledForTemplateDeployment')]",
-        "enabledForVolumeEncryption": "[parameters('enableVaultForVolumeEncryption')]",
-        "tenantId": "[parameters('tenantId')]",
-        "accessPolicies": "[parameters('accessPolicies')]",
         "sku": {
           "name": "[parameters('vaultSku')]",
           "family": "A"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults/accessPolicies",
-      "name": "[concat(parameters('keyVaultName'), '/add')]",
-      "apiVersion": "2018-02-14",
-      "properties": {
+        },
+        "tenantId": "[subscription().tenantId]"
         "accessPolicies": [
-          {
-            "tenantId": "[parameters('tenantId')]",
-            "objectId": "08174317-3be3-45d5-95cb-422a10ef43e3",
-            "permissions": {
-              "secrets": "[parameters('secretsPermissions')]"
-            }
-          }
-        ]
-      }
-    },
-    {
+                    {
+                        "tenantId": "[parameters('tenantId')]",
+                        "objectId": "08174317-3be3-45d5-95cb-422a10ef43e3",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+                    {
+                        "tenantId": "[parameters('tenantId')]",
+                        "objectId": "08174317-3be3-45d5-95cb-422a10ef43e3",
+                        "permissions": {
+                            "keys": [],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover"
+                            ],
+                            "certificates": []
+                        }
+                    },
+                    {
+                        "tenantId": "[parameters('tenantId')]"
+                        "objectId": "08174317-3be3-45d5-95cb-422a10ef43e3",
+                        "permissions": {
+                            "keys": [],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "delete"
+                            ],
+                            "certificates": []
+                        }
+                    }
+                ],
+                "enabledForDeployment": true,
+                "enabledForDiskEncryption": true,
+                "enabledForTemplateDeployment": true
+            },
+            "dependsOn": []
+        },
+        {
       "type": "Microsoft.KeyVault/vaults/secrets",
       "name": "[concat(parameters('keyVaultName'), '/', parameters('secretsObject').secrets[copyIndex()].secretName)]",
       "apiVersion": "2015-06-01",
