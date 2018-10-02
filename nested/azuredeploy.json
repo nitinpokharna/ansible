@@ -82,7 +82,7 @@
           "name": "[parameters('vaultSku')]",
           "family": "A"
         },
-        "tenantId": "[subscription().tenantId]"
+        "tenantId": "[parameters('tenantId')]"
         "accessPolicies": [
                     {
                         "tenantId": "[parameters('tenantId')]",
