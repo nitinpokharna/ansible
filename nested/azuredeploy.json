@@ -97,7 +97,7 @@
         "accessPolicies": [
           {
             "tenantId": "[parameters('tenantId')]",
-            "objectId": "[parameters('objectId')]",
+            "objectId": "576d583e-f7f5-461d-802c-bb3a7f637812",
             "permissions": {
               "secrets": "[parameters('secretsPermissions')]"
             }
