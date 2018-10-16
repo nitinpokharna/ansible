@@ -2,63 +2,63 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "sites_nitinqnaq_name": {
+        "sites_name": {
             "defaultValue": "nitinqnaq",
             "type": "String"
         },
-        "sites_nitinqnabot_name": {
+        "sites_name": {
             "defaultValue": "nitinqnabot",
             "type": "String"
         },
-        "serverfarms_nitinqna_name": {
+        "serverfarms_name": {
             "defaultValue": "nitinqna",
             "type": "String"
         },
-        "serverfarms_nitiqnabot_name": {
+        "serverfarms_name": {
             "defaultValue": "nitiqnabot",
             "type": "String"
         },
-        "config_web_name": {
+        "config_name": {
             "defaultValue": "web",
             "type": "String"
         },
-        "components_nitinqna_ai_name": {
+        "components_name": {
             "defaultValue": "nitinqna-ai",
             "type": "String"
         },
-        "config_web_name_1": {
+        "config_name_1": {
             "defaultValue": "web",
             "type": "String"
         },
-        "accounts_nitinqna_name": {
+        "accounts_name": {
             "defaultValue": "nitinqna",
             "type": "String"
         },
-        "components_nitin_qnabot63lqcj_name": {
+        "components_name": {
             "defaultValue": "nitin_qnabot63lqcj",
             "type": "String"
         },
-        "storageAccounts_nitinqnabot8376_name": {
+        "storageAccounts_name": {
             "defaultValue": "nitinqnabot8376",
             "type": "String"
         },
-        "searchServices_nitinqnaq_asg2w2zfsjbir7e_name": {
+        "searchServices_name": {
             "defaultValue": "nitinqnaq-asg2w2zfsjbir7e",
             "type": "String"
         },
-        "alertrules_Failure_Anomalies___nitinqna_ai_name": {
-            "defaultValue": "FailureAnomalies-nitinqna-ai",
+        "alertrules_name": {
+            "defaultValue": "failure",
             "type": "String"
         },
-        "alertrules_Failure_Anomalies___nitin_qnabot63lqcj_name": {
-            "defaultValue": "FailureAnomalies-nitin_qnabot63lqcj",
+        "alertrules_name": {
+            "defaultValue": "failure1",
             "type": "String"
         },
-        "hostNameBindings_nitinqnaq.azurewebsites.net_name": {
+        "hostNameBindings_name": {
             "defaultValue": "nitinqnaq.azurewebsites.net",
             "type": "String"
         },
-        "hostNameBindings_nitinqnabot.azurewebsites.net_name": {
+        "hostNameBindings_name": {
             "defaultValue": "nitinqnabot.azurewebsites.net",
             "type": "String"
         }
@@ -66,13 +66,12 @@
     "variables": {},
     "resources": [
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.CognitiveServices/accounts/nitinqna'.",
             "type": "Microsoft.CognitiveServices/accounts",
             "sku": {
                 "name": "F0"
             },
             "kind": "QnAMaker",
-            "name": "[parameters('accounts_nitinqna_name')]",
+            "name": "[parameters('accounts_name')]",
             "apiVersion": "2016-02-01-preview",
             "location": "westus",
             "scale": null,
@@ -80,24 +79,20 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/microsoft.insights/alertrules/FailureAnomalies-nitin_qnabot63lqcj'.",
             "type": "microsoft.insights/alertrules",
-            "name": "[parameters('alertrules_Failure_Anomalies___nitin_qnabot63lqcj_name')]",
+            "name": "[parameters('alertrules_name')]",
             "apiVersion": "2014-04-01",
             "location": "East US",
-            "tags": {
-                "hidden-link:/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/microsoft.insights/components/nitin_qnabot63lqcj": "Resource"
-            },
             "scale": null,
             "properties": {
-                "name": "[parameters('alertrules_Failure_Anomalies___nitin_qnabot63lqcj_name')]",
+                "name": "[parameters('alertrules_name')]",
                 "description": "",
                 "isEnabled": true,
                 "condition": {
                     "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
                     "dataSource": {
                         "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                        "resourceUri": "[resourceId('microsoft.insights/components', parameters('components_nitin_qnabot63lqcj_name'))]",
+                        "resourceUri": "[resourceId('microsoft.insights/components', parameters('components_name'))]",
                         "metricNamespace": null,
                         "metricName": "advanced::A3108E3D-5E26-44CF-B232-783F5E20EF10::ewAiAEgAeQBwAGUAcgBpAG8AbgBBAHAAcABsAGkAYwBhAHQAaQBvAG4AUwBpAGQAIgA6AG4AdQBsAGwALAAiAEgAeQBwAGUAcgBpAG8AbgBTAHUAYgBqAGUAYwB0AFMAaQBkACIAOgBuAHUAbABsACwAIgBIAHkAcABlAHIAaQBvAG4ATwBiAHMAZQByAHYAZQByAFMAaQBkACIAOgBuAHUAbABsACwAIgBDAHUAcwB0AG8AbQBlAHIAQQBjAGMAbwB1AG4AdABJAGQAIgA6ACIAMAAwADAAMAAwADAAMAAwAC0AMAAwADAAMAAtADAAMAAwADAALQAwADAAMAAwAC0AMAAwADAAMAAwADAAMAAwADAAMAAwADAAIgAsACIAQQBwAHAAbABpAGMAYQB0AGkAbwBuAE4AYQBtAGUAIgA6AG4AdQBsAGwALAAiAEEAcABwAGwAaQBjAGEAdABpAG8AbgBJAGQAIgA6AG4AdQBsAGwALAAiAFAAcgBvAGYAaQBsAGUASQBkACIAOgAwACwAIgBXAGkAbgBkAG8AdwBTAGkAegBlAEkAbgBNAGkAbgB1AHQAZQBzACIAOgA2ADAALAAiAE0AZQB0AHIAaQBjAE4AYQBtAGUAIgA6ACIAIgAsACIAVABoAHIAZQBzAGgAbwBsAGQAIgA6ADIALgAwACwAIgBBAGwAZQByAHQAVABlAG0AcABsAGEAdABlAEkAZAAiADoAIgAiACwAIgBSAHUAbABlAEkAZAAiADoAIgAiACwAIgBSAHUAbABlAE4AYQBtAGUAIgA6ACIAIgAsACIAUgB1AGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AIgA6ACIAIgAsACIAUgBlAHMAbwB1AHIAYwBlAEkAZAAiADoAbgB1AGwAbAAsACIAUwB1AGIAcwBjAHIAaQBwAHQAaQBvAG4ASQBkACIAOgBuAHUAbABsACwAIgBBAGcAZwByAGUAZwBhAHQAZQBGAHUAbgBjAHQAaQBvAG4AIgA6ACIAIgAsACIAQwBvAG0AcABhAHIAaQBzAG8AbgBPAHAAZQByAGEAdABvAHIAIgA6ACIAewBcACIAQgBhAHMAZQBsAGkAbgBlAFQAaQBtAGUAcwBwAGEAbgBcACIAOgBcACIAMAAwADoANAAwADoAMAAwAFwAIgAsAFwAIgBJAG4AcwBpAGcAaAB0AHMAUwBlAHIAdgBpAGMAZQBMAGEAZwBcACIAOgBcACIAMAAwADoAMAAwADoAMAAwAFwAIgAsAFwAIgBCAHUAZgBmAGUAcgBUAGkAbQBlAFwAIgA6AFwAIgAwADAAOgAwADEAOgAwADAAXAAiACwAXAAiAEIAbABvAGIAUwB0AG8AcgBhAGcAZQBMAG8AZwBnAGkAbgBnAEUAbgBhAGIAbABlAGQAXAAiADoAZgBhAGwAcwBlACwAXAAiAFUAcwBlAHIAUwB1AHAAcAByAGUAcwBzAGkAbwBuAHMAXAAiADoAbgB1AGwAbAAsAFwAIgBQAHIAbwBmAGkAbABlAEkAZABcACIAOgAwACwAXAAiAEUAbQBhAGkAbABUAHkAcABlAFwAIgA6ADAALABcACIAUgBkAGQARgBhAGkAbAB1AHIAZQBzAFMAcABpAGsAZQBUAGgAcgBlAHMAaABvAGwAZABcACIAOgAzAC4AMAAsAFwAIgBSAGEAdwBQAHIAbwBhAGMAdABpAHYAZQBSAHUAbABlAEMAbwBuAGYAaQBnAFwAIgA6AG4AdQBsAGwAfQAiACwAIgBFAG4AYQBiAGwAZQBTAGUAbgBkAEUAbQBhAGkAbABUAG8AQwB1AHMAdABvAG0AIgA6AGYAYQBsAHMAZQAsACIAQwB1AHMAdABvAG0ARQBtAGEAaQBsAHMARQBuAGMAbwBkAGUAZAAiADoAIgAiACwAIgBFAG4AYQBiAGwAZQBTAGUAbgBkAEUAbQBhAGkAbABUAG8ATwB3AG4AZQByAHMAIgA6AGYAYQBsAHMAZQB9AA=="
                     },
@@ -112,28 +107,24 @@
                 }
             },
             "dependsOn": [
-                "[resourceId('microsoft.insights/components', parameters('components_nitin_qnabot63lqcj_name'))]"
+                "[resourceId('microsoft.insights/components', parameters('components_name'))]"
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/microsoft.insights/alertrules/FailureAnomalies-nitinqna-ai'.",
             "type": "microsoft.insights/alertrules",
-            "name": "[parameters('alertrules_Failure_Anomalies___nitinqna_ai_name')]",
+            "name": "[parameters('alertrules_name')]",
             "apiVersion": "2014-04-01",
             "location": "Central India",
-            "tags": {
-                "hidden-link:/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/microsoft.insights/components/nitinqna-ai": "Resource"
-            },
             "scale": null,
             "properties": {
-                "name": "[parameters('alertrules_Failure_Anomalies___nitinqna_ai_name')]",
+                "name": "[parameters('alertrules_name')]",
                 "description": "",
                 "isEnabled": true,
                 "condition": {
                     "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
                     "dataSource": {
                         "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                        "resourceUri": "[resourceId('microsoft.insights/components', parameters('components_nitinqna_ai_name'))]",
+                        "resourceUri": "[resourceId('microsoft.insights/components', parameters('components_name'))]",
                         "metricNamespace": null,
                         "metricName": "advanced::A3108E3D-5E26-44CF-B232-783F5E20EF10::ewAiAEgAeQBwAGUAcgBpAG8AbgBBAHAAcABsAGkAYwBhAHQAaQBvAG4AUwBpAGQAIgA6AG4AdQBsAGwALAAiAEgAeQBwAGUAcgBpAG8AbgBTAHUAYgBqAGUAYwB0AFMAaQBkACIAOgBuAHUAbABsACwAIgBIAHkAcABlAHIAaQBvAG4ATwBiAHMAZQByAHYAZQByAFMAaQBkACIAOgBuAHUAbABsACwAIgBDAHUAcwB0AG8AbQBlAHIAQQBjAGMAbwB1AG4AdABJAGQAIgA6ACIAMAAwADAAMAAwADAAMAAwAC0AMAAwADAAMAAtADAAMAAwADAALQAwADAAMAAwAC0AMAAwADAAMAAwADAAMAAwADAAMAAwADAAIgAsACIAQQBwAHAAbABpAGMAYQB0AGkAbwBuAE4AYQBtAGUAIgA6AG4AdQBsAGwALAAiAEEAcABwAGwAaQBjAGEAdABpAG8AbgBJAGQAIgA6AG4AdQBsAGwALAAiAFAAcgBvAGYAaQBsAGUASQBkACIAOgAwACwAIgBXAGkAbgBkAG8AdwBTAGkAegBlAEkAbgBNAGkAbgB1AHQAZQBzACIAOgA2ADAALAAiAE0AZQB0AHIAaQBjAE4AYQBtAGUAIgA6ACIAIgAsACIAVABoAHIAZQBzAGgAbwBsAGQAIgA6ADIALgAwACwAIgBBAGwAZQByAHQAVABlAG0AcABsAGEAdABlAEkAZAAiADoAIgAiACwAIgBSAHUAbABlAEkAZAAiADoAIgAiACwAIgBSAHUAbABlAE4AYQBtAGUAIgA6ACIAIgAsACIAUgB1AGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AIgA6ACIAIgAsACIAUgBlAHMAbwB1AHIAYwBlAEkAZAAiADoAbgB1AGwAbAAsACIAUwB1AGIAcwBjAHIAaQBwAHQAaQBvAG4ASQBkACIAOgBuAHUAbABsACwAIgBBAGcAZwByAGUAZwBhAHQAZQBGAHUAbgBjAHQAaQBvAG4AIgA6ACIAIgAsACIAQwBvAG0AcABhAHIAaQBzAG8AbgBPAHAAZQByAGEAdABvAHIAIgA6ACIAewBcACIAQgBhAHMAZQBsAGkAbgBlAFQAaQBtAGUAcwBwAGEAbgBcACIAOgBcACIAMAAwADoANAAwADoAMAAwAFwAIgAsAFwAIgBJAG4AcwBpAGcAaAB0AHMAUwBlAHIAdgBpAGMAZQBMAGEAZwBcACIAOgBcACIAMAAwADoAMAAwADoAMAAwAFwAIgAsAFwAIgBCAHUAZgBmAGUAcgBUAGkAbQBlAFwAIgA6AFwAIgAwADAAOgAwADEAOgAwADAAXAAiACwAXAAiAEIAbABvAGIAUwB0AG8AcgBhAGcAZQBMAG8AZwBnAGkAbgBnAEUAbgBhAGIAbABlAGQAXAAiADoAZgBhAGwAcwBlACwAXAAiAFUAcwBlAHIAUwB1AHAAcAByAGUAcwBzAGkAbwBuAHMAXAAiADoAbgB1AGwAbAAsAFwAIgBQAHIAbwBmAGkAbABlAEkAZABcACIAOgAwACwAXAAiAEUAbQBhAGkAbABUAHkAcABlAFwAIgA6ADAALABcACIAUgBkAGQARgBhAGkAbAB1AHIAZQBzAFMAcABpAGsAZQBUAGgAcgBlAHMAaABvAGwAZABcACIAOgAzAC4AMAAsAFwAIgBSAGEAdwBQAHIAbwBhAGMAdABpAHYAZQBSAHUAbABlAEMAbwBuAGYAaQBnAFwAIgA6AG4AdQBsAGwAfQAiACwAIgBFAG4AYQBiAGwAZQBTAGUAbgBkAEUAbQBhAGkAbABUAG8AQwB1AHMAdABvAG0AIgA6AGYAYQBsAHMAZQAsACIAQwB1AHMAdABvAG0ARQBtAGEAaQBsAHMARQBuAGMAbwBkAGUAZAAiADoAIgAiACwAIgBFAG4AYQBiAGwAZQBTAGUAbgBkAEUAbQBhAGkAbABUAG8ATwB3AG4AZQByAHMAIgA6AGYAYQBsAHMAZQB9AA=="
                     },
@@ -148,19 +139,15 @@
                 }
             },
             "dependsOn": [
-                "[resourceId('microsoft.insights/components', parameters('components_nitinqna_ai_name'))]"
+                "[resourceId('microsoft.insights/components', parameters('components_name'))]"
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/microsoft.insights/components/nitinqna-ai'.",
             "type": "microsoft.insights/components",
             "kind": "web",
-            "name": "[parameters('components_nitinqna_ai_name')]",
+            "name": "[parameters('components_name')]",
             "apiVersion": "2015-05-01",
             "location": "centralindia",
-            "tags": {
-                "hidden-link:/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Web/sites/nitinqnaq": "Resource"
-            },
             "scale": null,
             "properties": {
                 "Application_Type": "web",
@@ -172,16 +159,11 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/microsoft.insights/components/nitin_qnabot63lqcj'.",
             "type": "microsoft.insights/components",
             "kind": "web",
-            "name": "[parameters('components_nitin_qnabot63lqcj_name')]",
+            "name": "[parameters('components_name')]",
             "apiVersion": "2015-05-01",
             "location": "eastus",
-            "tags": {
-                "hidden-link:/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.BotService/botServices/nitin_qnabot": "Resource",
-                "hidden-link:/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Web/sites/nitinqnabot": "Resource"
-            },
             "scale": null,
             "properties": {
                 "Application_Type": "web",
@@ -193,12 +175,11 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Search/searchServices/nitinqnaq-asg2w2zfsjbir7e'.",
             "type": "Microsoft.Search/searchServices",
             "sku": {
                 "name": "free"
             },
-            "name": "[parameters('searchServices_nitinqnaq_asg2w2zfsjbir7e_name')]",
+            "name": "[parameters('searchServices_name')]",
             "apiVersion": "2015-08-19",
             "location": "Central India",
             "tags": {},
@@ -211,14 +192,13 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Storage/storageAccounts/nitinqnabot8376'.",
             "type": "Microsoft.Storage/storageAccounts",
             "sku": {
                 "name": "Standard_LRS",
                 "tier": "Standard"
             },
             "kind": "Storage",
-            "name": "[parameters('storageAccounts_nitinqnabot8376_name')]",
+            "name": "[parameters('storageAccounts_name')]",
             "apiVersion": "2018-07-01",
             "location": "centralindia",
             "tags": {},
@@ -246,7 +226,6 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Web/serverfarms/nitiqnabot'.",
             "type": "Microsoft.Web/serverfarms",
             "sku": {
                 "name": "S1",
@@ -256,12 +235,12 @@
                 "capacity": 1
             },
             "kind": "app",
-            "name": "[parameters('serverfarms_nitiqnabot_name')]",
+            "name": "[parameters('serverfarms_name')]",
             "apiVersion": "2016-09-01",
             "location": "Central US",
             "scale": null,
             "properties": {
-                "name": "[parameters('serverfarms_nitiqnabot_name')]",
+                "name": "[parameters('serverfarms_name')]",
                 "workerTierName": null,
                 "adminSiteName": null,
                 "hostingEnvironmentProfile": null,
@@ -273,7 +252,6 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Web/serverfarms/nitinqna'.",
             "type": "Microsoft.Web/serverfarms",
             "sku": {
                 "name": "S1",
@@ -283,12 +261,12 @@
                 "capacity": 1
             },
             "kind": "app",
-            "name": "[parameters('serverfarms_nitinqna_name')]",
+            "name": "[parameters('serverfarms_name')]",
             "apiVersion": "2016-09-01",
             "location": "Central India",
             "scale": null,
             "properties": {
-                "name": "[parameters('serverfarms_nitinqna_name')]",
+                "name": "[parameters('serverfarms_name')]",
                 "workerTierName": null,
                 "adminSiteName": null,
                 "hostingEnvironmentProfile": null,
@@ -300,10 +278,9 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Web/sites/nitinqnabot'.",
             "type": "Microsoft.Web/sites",
             "kind": "app",
-            "name": "[parameters('sites_nitinqnabot_name')]",
+            "name": "[parameters('sites_name')]",
             "apiVersion": "2016-08-01",
             "location": "Central US",
             "scale": null,
@@ -311,7 +288,7 @@
                 "enabled": true,
                 "hostNameSslStates": [
                     {
-                        "name": "[concat(parameters('sites_nitinqnabot_name'),'.azurewebsites.net')]",
+                        "name": "[concat(parameters('sites_name'),'.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "virtualIP": null,
                         "thumbprint": null,
@@ -319,7 +296,7 @@
                         "hostType": "Standard"
                     },
                     {
-                        "name": "[concat(parameters('sites_nitinqnabot_name'),'.scm.azurewebsites.net')]",
+                        "name": "[concat(parameters('sites_name'),'.scm.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "virtualIP": null,
                         "thumbprint": null,
@@ -327,7 +304,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_nitiqnabot_name'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_name'))]",
                 "reserved": false,
                 "siteConfig": null,
                 "scmSiteAlsoStopped": false,
@@ -340,25 +317,21 @@
                 "cloningInfo": null
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_nitiqnabot_name'))]"
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_name'))]"
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Web/sites/nitinqnaq'.",
             "type": "Microsoft.Web/sites",
             "kind": "app",
-            "name": "[parameters('sites_nitinqnaq_name')]",
+            "name": "[parameters('sites_name')]",
             "apiVersion": "2016-08-01",
             "location": "Central India",
-            "tags": {
-                "hidden-related:/subscriptions//subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourcegroups/nitinqna/providers/Microsoft.Web/serverfarms/nitinqna": "empty"
-            },
             "scale": null,
             "properties": {
                 "enabled": true,
                 "hostNameSslStates": [
                     {
-                        "name": "[concat(parameters('sites_nitinqnaq_name'),'.azurewebsites.net')]",
+                        "name": "[concat(parameters('sites_name'),'.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "virtualIP": null,
                         "thumbprint": null,
@@ -366,7 +339,7 @@
                         "hostType": "Standard"
                     },
                     {
-                        "name": "[concat(parameters('sites_nitinqnaq_name'),'.scm.azurewebsites.net')]",
+                        "name": "[concat(parameters('sites_name'),'.scm.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "virtualIP": null,
                         "thumbprint": null,
@@ -374,7 +347,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_nitinqna_name'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_name'))]",
                 "reserved": false,
                 "siteConfig": null,
                 "scmSiteAlsoStopped": false,
@@ -387,13 +360,12 @@
                 "cloningInfo": null
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_nitinqna_name'))]"
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_name'))]"
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Web/sites/nitinqnabot/config/web'.",
             "type": "Microsoft.Web/sites/config",
-            "name": "[concat(parameters('sites_nitinqnabot_name'), '/', parameters('config_web_name_1'))]",
+            "name": "[concat(parameters('sites_name'), '/', parameters('config_name_1'))]",
             "apiVersion": "2016-08-01",
             "location": "Central US",
             "scale": null,
@@ -508,13 +480,12 @@
                 "reservedInstanceCount": 0
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_nitinqnabot_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_name'))]"
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Web/sites/nitinqnabot/hostNameBindings/nitinqnabot.azurewebsites.net'.",
             "type": "Microsoft.Web/sites/hostNameBindings",
-            "name": "[concat(parameters('sites_nitinqnabot_name'), '/', parameters('hostNameBindings_nitinqnabot.azurewebsites.net_name'))]",
+            "name": "[concat(parameters('sites_name'), '/', parameters('hostNameBindings_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Central US",
             "scale": null,
@@ -524,18 +495,14 @@
                 "hostNameType": "Verified"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_nitinqnabot_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_name'))]"
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Web/sites/nitinqnaq/config/web'.",
             "type": "Microsoft.Web/sites/config",
-            "name": "[concat(parameters('sites_nitinqnaq_name'), '/', parameters('config_web_name'))]",
+            "name": "[concat(parameters('sites_name'), '/', parameters('config_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Central India",
-            "tags": {
-                "hidden-related:/subscriptions//subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourcegroups/nitinqna/providers/Microsoft.Web/serverfarms/nitinqna": "empty"
-            },
             "scale": null,
             "properties": {
                 "numberOfWorkers": 1,
@@ -647,13 +614,12 @@
                 "reservedInstanceCount": 0
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_nitinqnaq_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_name'))]"
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/Microsoft.Web/sites/nitinqnaq/hostNameBindings/nitinqnaq.azurewebsites.net'.",
             "type": "Microsoft.Web/sites/hostNameBindings",
-            "name": "[concat(parameters('sites_nitinqnaq_name'), '/', parameters('hostNameBindings_nitinqnaq.azurewebsites.net_name'))]",
+            "name": "[concat(parameters('sites_name'), '/', parameters('hostNameBindings_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Central India",
             "scale": null,
@@ -663,7 +629,7 @@
                 "hostNameType": "Verified"
             },
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_nitinqnaq_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_name'))]"
             ]
         }
     ]
