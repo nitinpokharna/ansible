@@ -50,10 +50,6 @@
             "defaultValue": "failure",
             "type": "String"
         },
-        "alertrules_name": {
-            "defaultValue": "failure1",
-            "type": "String"
-        },
         "hostNameBindings_name": {
             "defaultValue": "nitinqnaq.azurewebsites.net",
             "type": "String"
