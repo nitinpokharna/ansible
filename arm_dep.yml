@@ -6,7 +6,7 @@
   vars:
     # Variables 'resgrp' and 'location' need to be provided at command line with arg --extra-vars
     templateLink: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/azuredeploy1.json'
-    paramsLink: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/azuredeploy1.parameters.json'
+    #paramsLink: 'https://raw.githubusercontent.com/nitinpokharna/ansible/master/azuredeploy1.parameters.json'
    
   tasks:
   - name: Creating webapp bot
@@ -16,5 +16,5 @@
         # location seems to be not optional
         location: 'West US'
         template_link: '{{ templateLink }}'
-        parameters_link: '{{ paramsLink }}'
+        #parameters_link: '{{ paramsLink }}'
 
