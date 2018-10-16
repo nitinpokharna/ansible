@@ -3,49 +3,49 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_nitinqnaq_name": {
-            "value": null
+            "value": "nitinqnaq"
         },
         "sites_nitinqnabot_name": {
-            "value": null
+            "value": "nitinqnabot"
         },
         "serverfarms_nitinqna_name": {
-            "value": null
+            "value": "nitinqna"
         },
         "serverfarms_nitiqnabot_name": {
-            "value": null
+            "value": "nitiqnabot"
         },
         "config_web_name": {
-            "value": null
+            "value": "web"
         },
         "components_nitinqna_ai_name": {
-            "value": null
+            "value": "nitinqna_ai"
         },
         "config_web_name_1": {
-            "value": null
+            "value": "web1"
         },
         "accounts_nitinqna_name": {
-            "value": null
+            "value": "nitinqna"
         },
         "components_nitin_qnabot63lqcj_name": {
-            "value": null
+            "value": "qnabot63lqcj"
         },
         "storageAccounts_nitinqnabot8376_name": {
-            "value": null
+            "value": "nitinqnabot8376"
         },
         "searchServices_nitinqnaq_asg2w2zfsjbir7e_name": {
-            "value": null
+            "value": "nitinqnaq_asg2w2zfsjbir7e"
         },
         "alertrules_Failure_Anomalies___nitinqna_ai_name": {
-            "value": null
+            "value": "nitinqna_ai"
         },
         "alertrules_Failure_Anomalies___nitin_qnabot63lqcj_name": {
-            "value": null
+            "value": "nitin_qnabot63lqcj"
         },
         "hostNameBindings_nitinqnaq.azurewebsites.net_name": {
-            "value": null
+            "value": "nitinqnaq.azurewebsites.net"
         },
         "hostNameBindings_nitinqnabot.azurewebsites.net_name": {
-            "value": null
+            "value": "nitinqnabot.azurewebsites.net"
         }
     }
 }
