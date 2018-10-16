@@ -30,10 +30,6 @@
             "defaultValue": "nitinqna",
             "type": "String"
         },
-        "components_name": {
-            "defaultValue": "nitin_qnabot63lqcj",
-            "type": "String"
-        },
         "storageAccounts_name": {
             "defaultValue": "nitinqnabot8376",
             "type": "String"
