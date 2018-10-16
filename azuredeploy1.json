@@ -111,22 +111,6 @@
             "kind": "web",
             "name": "[parameters('components_name')]",
             "apiVersion": "2015-05-01",
-            "location": "centralindia",
-            "scale": null,
-            "properties": {
-                "Application_Type": "web",
-                "Flow_Type": null,
-                "Request_Source": null,
-                "HockeyAppId": null,
-                "SamplingPercentage": null
-            },
-            "dependsOn": []
-        },
-        {
-            "type": "microsoft.insights/components",
-            "kind": "web",
-            "name": "[parameters('components_name')]",
-            "apiVersion": "2015-05-01",
             "location": "eastus",
             "scale": null,
             "properties": {
