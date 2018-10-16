@@ -11,10 +11,6 @@
             "type": "String"
         },
         "serverfarms_name": {
-            "defaultValue": "nitinqna",
-            "type": "String"
-        },
-        "serverfarms_name": {
             "defaultValue": "nitiqnabot",
             "type": "String"
         },
@@ -200,80 +196,11 @@
             "dependsOn": []
         },
         {
-            "type": "Microsoft.Web/serverfarms",
-            "sku": {
-                "name": "S1",
-                "tier": "Standard",
-                "size": "S1",
-                "family": "S",
-                "capacity": 1
-            },
-            "kind": "app",
-            "name": "[parameters('serverfarms_name')]",
-            "apiVersion": "2016-09-01",
-            "location": "Central India",
-            "scale": null,
-            "properties": {
-                "name": "[parameters('serverfarms_name')]",
-                "workerTierName": null,
-                "adminSiteName": null,
-                "hostingEnvironmentProfile": null,
-                "perSiteScaling": false,
-                "reserved": false,
-                "targetWorkerCount": 0,
-                "targetWorkerSizeId": 0
-            },
-            "dependsOn": []
-        },
-        {
             "type": "Microsoft.Web/sites",
             "kind": "app",
             "name": "[parameters('sites_name')]",
             "apiVersion": "2016-08-01",
             "location": "Central US",
-            "scale": null,
-            "properties": {
-                "enabled": true,
-                "hostNameSslStates": [
-                    {
-                        "name": "[concat(parameters('sites_name'),'.azurewebsites.net')]",
-                        "sslState": "Disabled",
-                        "virtualIP": null,
-                        "thumbprint": null,
-                        "toUpdate": null,
-                        "hostType": "Standard"
-                    },
-                    {
-                        "name": "[concat(parameters('sites_name'),'.scm.azurewebsites.net')]",
-                        "sslState": "Disabled",
-                        "virtualIP": null,
-                        "thumbprint": null,
-                        "toUpdate": null,
-                        "hostType": "Repository"
-                    }
-                ],
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_name'))]",
-                "reserved": false,
-                "siteConfig": null,
-                "scmSiteAlsoStopped": false,
-                "hostingEnvironmentProfile": null,
-                "clientAffinityEnabled": true,
-                "clientCertEnabled": false,
-                "hostNamesDisabled": false,
-                "containerSize": 0,
-                "dailyMemoryTimeQuota": 0,
-                "cloningInfo": null
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_name'))]"
-            ]
-        },
-        {
-            "type": "Microsoft.Web/sites",
-            "kind": "app",
-            "name": "[parameters('sites_name')]",
-            "apiVersion": "2016-08-01",
-            "location": "Central India",
             "scale": null,
             "properties": {
                 "enabled": true,
