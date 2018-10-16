@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_nitinqnaq_name": {
+            "value": null
+        },
+        "sites_nitinqnabot_name": {
+            "value": null
+        },
+        "serverfarms_nitinqna_name": {
+            "value": null
+        },
+        "serverfarms_nitiqnabot_name": {
+            "value": null
+        },
+        "config_web_name": {
+            "value": null
+        },
+        "components_nitinqna_ai_name": {
+            "value": null
+        },
+        "config_web_name_1": {
+            "value": null
+        },
+        "accounts_nitinqna_name": {
+            "value": null
+        },
+        "components_nitin_qnabot63lqcj_name": {
+            "value": null
+        },
+        "storageAccounts_nitinqnabot8376_name": {
+            "value": null
+        },
+        "searchServices_nitinqnaq_asg2w2zfsjbir7e_name": {
+            "value": null
+        },
+        "alertrules_Failure_Anomalies___nitinqna_ai_name": {
+            "value": null
+        },
+        "alertrules_Failure_Anomalies___nitin_qnabot63lqcj_name": {
+            "value": null
+        },
+        "hostNameBindings_nitinqnaq.azurewebsites.net_name": {
+            "value": null
+        },
+        "hostNameBindings_nitinqnabot.azurewebsites.net_name": {
+            "value": null
+        }
+    }
+}
