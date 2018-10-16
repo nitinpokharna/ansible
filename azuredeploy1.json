@@ -47,11 +47,11 @@
             "type": "String"
         },
         "alertrules_Failure_Anomalies___nitinqna_ai_name": {
-            "defaultValue": "Failure Anomalies - nitinqna-ai",
+            "defaultValue": "FailureAnomalies-nitinqna-ai",
             "type": "String"
         },
         "alertrules_Failure_Anomalies___nitin_qnabot63lqcj_name": {
-            "defaultValue": "Failure Anomalies - nitin_qnabot63lqcj",
+            "defaultValue": "FailureAnomalies-nitin_qnabot63lqcj",
             "type": "String"
         },
         "hostNameBindings_nitinqnaq.azurewebsites.net_name": {
@@ -80,7 +80,7 @@
             "dependsOn": []
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/microsoft.insights/alertrules/Failure Anomalies - nitin_qnabot63lqcj'.",
+            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/microsoft.insights/alertrules/FailureAnomalies-nitin_qnabot63lqcj'.",
             "type": "microsoft.insights/alertrules",
             "name": "[parameters('alertrules_Failure_Anomalies___nitin_qnabot63lqcj_name')]",
             "apiVersion": "2014-04-01",
@@ -116,7 +116,7 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/microsoft.insights/alertrules/Failure Anomalies - nitinqna-ai'.",
+            "comments": "Generalized from resource: '/subscriptions/7baa9f2b-0857-4063-a952-a2ff81a3fc80/resourceGroups/nitinqna/providers/microsoft.insights/alertrules/FailureAnomalies-nitinqna-ai'.",
             "type": "microsoft.insights/alertrules",
             "name": "[parameters('alertrules_Failure_Anomalies___nitinqna_ai_name')]",
             "apiVersion": "2014-04-01",
