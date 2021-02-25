@@ -1,0 +1,32 @@
+name: manage-azure-policy-06a152ca
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        description: 'Reason for triggering the workflow run'
+        required: false
+        default: 'Updating Azure Policies'
+
+
+## Uncomment the following if you wish to automatically trigger workflow run with every commit
+#
+#  push:
+#    paths:
+#      - 'policies/SQL_servers_should_use_customer-managed_keys_to_encrypt_data_at_rest_0d134df8-db83-46fb-ad72-fe0c9428c8dd/**'
+#      - .github/workflows/manage-azure-policy-06a152ca.yml
+jobs:
+  apply-azure-policy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS_06a152ca}}
+        allow-no-subscriptions: true
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:
+        paths: |
+          policies/SQL_servers_should_use_customer-managed_keys_to_encrypt_data_at_rest_0d134df8-db83-46fb-ad72-fe0c9428c8dd/**
